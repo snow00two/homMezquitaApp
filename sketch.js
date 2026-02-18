@@ -1,8 +1,7 @@
-/*  Homage to Mezquita--　Simulator of lattice and perspective: rotaion and moving version, 2025/07/05 */
-/* To ran this program first downloard p5.js from https://p5js.org/download/  */
-/* Put this file in the directory containning index.htm, p5.js, p5.sound.js  */
-/* Open the directory by vscode with the Live Server extention  */
-/* Push the Go Live botton. Then it automatically starts the program. */
+/*  Homage to Mezquita--Simulator of lattice and perspective, 
+ *  2026/02/18, version 0.2, snow00two,
+ * \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{\ccbyncsa}
+ */
 const WIDTH_CANVAS = 720 * 3/2  ; //=1080
 const HEIGHT_CANVAS = 405 * 3/2 ; //=607.5
 const BACK_COLOR = [150, 200, 255] ;//[150, 200, 250]
