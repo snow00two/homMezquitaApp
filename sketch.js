@@ -2,8 +2,8 @@
  *  2026/02/18, version 0.2, snow00two,
  * \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{\ccbyncsa}
  */
-const WIDTH_CANVAS = 720 * 3/2  ; //=1080
-const HEIGHT_CANVAS = 405 * 3/2 ; //=607.5
+let widthCanvas = 1080  ;  //=1080
+let heightCanvas = 607.5 ; //=607.5
 const BACK_COLOR = [150, 200, 255] ;//[150, 200, 250]
 const FLOOR_COLOR = [250, 200, 155] ;//[250, 150, 150]
 const WHITE_COLOR = 255;//=2^8-1
@@ -27,19 +27,25 @@ let lightState;
 //p5.disableFriendlyErrors = true;
 
 function setup() {
+  widthCanvas = windowWidth ;
+  if ( windowHeight > widthCanvas ) {
+      heightCanvas = widthCanvas;
+  } else {
+      heightCanvas = windowHeight;
+  };
   selectMode = createSelect() ;
   selectMode.option('flight mode', 'flight') ; /* auto moving mode */
   selectMode.option('rotation mode', 'rotation') ; /*  auto rotation mode */
   selectMode.option('manual mode', 'manual') ;/* manual mode */
   selectMode.selected('flight') ;
-  selectMode.position(WIDTH_CANVAS -130, 50) ;
+  selectMode.position(widthCanvas -130, 50) ;
   selectMode.changed( resetBackground ) ;
 
   floorState = createSelect() ;
   floorState.option('floor on', 'on') ;
   floorState.option('floor off', 'off') ;
   floorState.selected('on') ;
-  floorState.position(WIDTH_CANVAS -80, 140) ;
+  floorState.position(widthCanvas -80, 140) ;
   floorState.changed( resetBackground ) ;
 
   setFigure = createSelect() ;
@@ -47,7 +53,7 @@ function setup() {
   setFigure.option('box', 'box') ; /* box */
   setFigure.option('ball', 'ball') ; /* ball */
   setFigure.selected('column') ;
-  setFigure.position(WIDTH_CANVAS -80, 80) ;
+  setFigure.position(widthCanvas -80, 80) ;
   setFigure.changed( resetBackground ) ;
 
   selectLattice = createSelect() ;
@@ -56,48 +62,48 @@ function setup() {
   selectLattice.option('rhombic', 'rhombic') ; /* rhombic lattice */
   selectLattice.option('oblique', 'oblique') ; /* oblique lattice and rectangular lattice when genY = 0 */
   selectLattice.selected('square') ;
-  selectLattice.position(WIDTH_CANVAS - 105, 20) ;
+  selectLattice.position(widthCanvas - 105, 20) ;
   selectLattice.changed( resetBackground ) ;
 
   lightState =  createSelect() ;
   lightState.option('lamp on', 'on') ; 
   lightState.option('lamp off', 'off') ; 
   lightState.selected('on');
-  lightState.position(WIDTH_CANVAS - 86, 110) ;
+  lightState.position(widthCanvas - 86, 110) ;
  
   // setZcoordinate = createSlider(-200, 400, 100, 0) ; /* set the z-angle */
-  // setZcoordinate.position(WIDTH_CANVAS + 30, 140) ;
+  // setZcoordinate.position(widthCanvas + 30, 140) ;
   // setZcoordinate.changed( resetBackground ) ;
 
   // selectDir = createSlider(0, 6, 3, 0) ; /* set the angle */
-  // selectDir.position(WIDTH_CANVAS + 30, 160) ;
+  // selectDir.position(widthCanvas + 30, 160) ;
   // selectDir.changed( resetBackground ) ;
 
   // setSpeed = createSlider(0.5, 4, 2, 0) ;
-  // setSpeed.position(WIDTH_CANVAS + 30, 180) ;
+  // setSpeed.position(widthCanvas + 30, 180) ;
   // setSpeed.changed( resetBackground ) ;
 
   setobliqueLatticeX = createSlider(0, 1, 0, 0) ;
-  setobliqueLatticeX.position(WIDTH_CANVAS -130, 200) ;
+  setobliqueLatticeX.position(widthCanvas -130, 200) ;
   setobliqueLatticeX.changed( resetBackground ) ;
 
   setobliqueLatticeY = createSlider(0.5, 3, 1.7, 0) ; /*We use this parameter for rhombic latice too*/
-  setobliqueLatticeY.position(WIDTH_CANVAS -130, 220) ;
+  setobliqueLatticeY.position(widthCanvas -130, 220) ;
   setobliqueLatticeY.changed( resetBackground ) ;
 
   setCameraHeight = createSlider(30, 3000, 100, 0) ;
-  setCameraHeight.position(WIDTH_CANVAS -130, 280) ;
+  setCameraHeight.position(widthCanvas -130, 280) ;
   setCameraHeight.changed( resetBackground ) ;
 
   setYcoordinate = createSlider(-200, 200, 0, 0) ; /* set  */
-  setYcoordinate.position(WIDTH_CANVAS -130, 300) ;
+  setYcoordinate.position(widthCanvas -130, 300) ;
   setYcoordinate.changed( resetBackground ) ;
 
   setHeightLight = createSlider(0, 300, 180, 0) ;
-  setHeightLight.position(WIDTH_CANVAS - 130, 180) ;
+  setHeightLight.position(widthCanvas - 130, 180) ;
   setHeightLight.changed( resetBackground ) ;
 
-  createCanvas(WIDTH_CANVAS, HEIGHT_CANVAS, WEBGL);
+  createCanvas(widthCanvas, heightCanvas, WEBGL);
   background(BACK_COLOR);// 
 }
 
